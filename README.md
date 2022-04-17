@@ -1,2 +1,4 @@
 # LondonAirbnb
-Project analysing 2021 Airbnb data for London, UK
+Project analysing Airbnb data for London, UK compiled in 2021.
+
+[Full AirBnB data](http://insideairbnb.com/get-the-data/).
