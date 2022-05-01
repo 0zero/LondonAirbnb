@@ -15,7 +15,7 @@ I also look at the following questions but there isn't much to say about them (s
 
 ## Summary of Results
 
-For more detailed discussions of the findings please refer to the notebook or its corresponding medium article. Below are a summary of the answers to the questions posed above.
+For more detailed discussions of the findings please refer to the [notebook](airbnb.ipynb) or its corresponding [medium article](https://medium.com/@japheth.yates/scoping-out-londons-airbnb-market-5bea3c1948d1). Below are a summary of the answers to the questions posed above.
 
 1. On average, where in London are Airbnb's most expensive listings?
     * Westminster: £ 258.0 per night.
@@ -26,7 +26,7 @@ For more detailed discussions of the findings please refer to the notebook or it
     * Westminister or City of London depending on feature used.
 
 3. Can we predict the price for a London Airbnb listing?
-    * Not very well, $r^2 \approx 0.4$ or an $\text{RMSE} \approx \text{£50}$ when filtering data to include only listings with a price lower than £1000 per night.
+    * Not very well, r^2 score ~ 0.4 or an RMSE ~ £50 when filtering data to include only listings with a price lower than £1000 per night.
      
 
 ## The Data
