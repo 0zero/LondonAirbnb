@@ -13,11 +13,27 @@ I also look at the following questions but there isn't much to say about them (s
 - Do visitors prefer to hire the entire house/apartment or a single room?
 - Which area in London has the best AirBnB ratings?
 
+## Summary of Results
+
+For more detailed discussions of the findings please refer to the notebook or its corresponding medium article. Below are a summary of the answers to the questions posed above.
+
+1. On average, where in London are Airbnb's most expensive listings?
+    * Westminster: £ 258.0 per night.
+	* City of London: £ 237.0 per night.
+	* Kensington and Chelsea: £ 222.0 per night.
+
+2. Which of London's boroughs are the most popular for Airbnb listings?
+    * Westminister or City of London depending on feature used.
+
+3. Can we predict the price for a London Airbnb listing?
+    * Not very well, $r^2 \approx 0.4$ or an $\text{RMSE} \approx \text{£50}$ when filtering data to include only listings with a price lower than £1000 per night.
+     
+
 ## The Data
 
 I'll be using Airbnb listing data for London which was compiled in December 2021. You can find links to the [full dataset](http://insideairbnb.com/get-the-data/) and some [AirBnB visualisations](http://insideairbnb.com/london/). Airbnb also provide a [spreadsheet with explanations for each data column](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit#gid=982310896) and some [assumptions](http://insideairbnb.com/data-assumptions/) in the data.
 
-For this particular analysis I've only used the following three data files:
+For this particular analysis I've only used the following three data files (some of which are stored with [git lfs](https://git-lfs.github.com/)):
 
 * `listings.csv` : Detailed Listings data. Size: 150 Mb.
 * `listings_summary.csv` : Summary information and metrics for listings in London (good for visualisations). Size: 8.9 Mb.
@@ -37,6 +53,12 @@ You can then activate it with
 ```
 conda activate airbnb_london
 ```
+This will install `numpy`, `pandas`, `geopandas`, `matplotlib`, `sklearn`, `seaborn`, `plotly` and their dependencies. 
+
+## Other files description
+* `airbnb.ipynb` : Jupyter notebook containing all the analysis within this project.
+* `.gitattributes` : containing details of which file types are tracked by `git lfs`.
+
 
 ---
 
