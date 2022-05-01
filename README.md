@@ -1,6 +1,43 @@
-# LondonAirbnb
-Project analysing Airbnb data for London, UK compiled in 2021.
+# London's Airbnb scene
 
-[Full AirBnB data](http://insideairbnb.com/get-the-data/)
+This project sets out to analyse Airbnb data for London, UK compiled in 2021.
 
-[AirBnB London Visualisations](http://insideairbnb.com/london/)
+## Brief
+Under the guise of working for a rental property investor, I will aim to answer, or at the very least provide insight into, the following questions.
+
+1. On average, where in London are Airbnb's most expensive listings?
+2. Which of London's boroughs are the most popular for Airbnb listings?
+3. Can we predict the price for a London Airbnb listing?
+
+I also look at the following questions but there isn't much to say about them (see the [notebook](airbnb.ipynb) as to why):
+- Do visitors prefer to hire the entire house/apartment or a single room?
+- Which area in London has the best AirBnB ratings?
+
+## The Data
+
+I'll be using Airbnb listing data for London which was compiled in December 2021. You can find links to the [full dataset](http://insideairbnb.com/get-the-data/) and some [AirBnB visualisations](http://insideairbnb.com/london/). Airbnb also provide a [spreadsheet with explanations for each data column](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit#gid=982310896) and some [assumptions](http://insideairbnb.com/data-assumptions/) in the data.
+
+For this particular analysis I've only used the following three data files:
+
+* `listings.csv` : Detailed Listings data. Size: 150 Mb.
+* `listings_summary.csv` : Summary information and metrics for listings in London (good for visualisations). Size: 8.9 Mb.
+* `neighbourhoods.geojson` : GeoJSON file of neighbourhoods of the city. Size: 1 Mb.
+
+
+## Environment setup
+
+I've used [Anaconda](https://www.anaconda.com/) with Python 3.9.2 to create the environment for this work. You can use the `requirement.yml` file to create the environment locally using:
+
+```
+conda env create -f requirement.yml
+```
+
+You can then activate it with
+
+```
+conda activate airbnb_london
+```
+
+---
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
