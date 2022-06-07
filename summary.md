@@ -64,7 +64,7 @@ There are some details about decisions made and explorations within the `airbnb.
 The models created here aren't particularly useful yet but here's a list of changes/updates that I think could lead to some improvements:
 - Implement models for each property type e.g. `entire apartment/house`, `private room`, etc. This would focus the model as you can imagine that treating a 5 bedroom house the same as a shared room is not the best approach.
 - Create a hierarchical Bayesian model with the same idea as above but instead of having X-different models, it's one that can account for all room types, or any other feature that we feel can be thought of as hierarchical. 
-- Perform a GridSearch on each possible model to obtain the "best" model parameters that we search through
+- Perform a GridSearchCV on each possible model to obtain the "best" model parameters that we search through
 - More feature engineering. In this model it's been pretty basic so far. 
 - Perhaps use of mutual information instead of Pearson's correlation coefficient to select features that have influence on the price
 - Fit various regressor models to the data. Then perform model comparison and select the one that performs best on new/unseen data.

@@ -80,11 +80,15 @@ class DataProcessor:
         :return: Original Neighbours GeoDF
         """
         # TODO: refactor this - separate feature groups and clean up code
+
+        listings = self.listings.copy()
+        self.neighbourhoods = self.neighbourhoods.set_index("neighbourhood")
+
         # Features for Price across London Boroughs
-        self.neighbourhoods["price_mean"] = self.listings.groupby("neighbourhood_cleansed")["price_numeric"].mean()
-        self.neighbourhoods["price_std"] = self.listings.groupby("neighbourhood_cleansed")["price_numeric"].std()
-        self.neighbourhoods["price_median"] = self.listings.groupby("neighbourhood_cleansed")["price_numeric"].median()
-        self.neighbourhoods["price_mode"] = self.listings.groupby("neighbourhood_cleansed")["price_numeric"].agg(
+        self.neighbourhoods["price_mean"] = listings.groupby("neighbourhood_cleansed")["price_numeric"].mean()
+        self.neighbourhoods["price_std"] = listings.groupby("neighbourhood_cleansed")["price_numeric"].std()
+        self.neighbourhoods["price_median"] = listings.groupby("neighbourhood_cleansed")["price_numeric"].median()
+        self.neighbourhoods["price_mode"] = listings.groupby("neighbourhood_cleansed")["price_numeric"].agg(
             pd.Series.mode)
 
         # Features for Reviews across London Boroughs
@@ -106,16 +110,16 @@ class DataProcessor:
         # This assumption is fairly strong but in the absence of data related to how many times
         # each listing has been rented this is a good substitute.
 
-        self.neighbourhoods["number_of_reviews"] = self.listings.groupby(
+        self.neighbourhoods["number_of_reviews"] = listings.groupby(
             "neighbourhood_cleansed")["number_of_reviews"].sum()
-        self.neighbourhoods["number_of_listings"] = self.listings.groupby(
+        self.neighbourhoods["number_of_listings"] = listings.groupby(
             "neighbourhood_cleansed")["id"].count()
-        self.neighbourhoods["number_of_reviews_per_listings"] = self.listings.groupby(
-            "neighbourhood_cleansed")["number_of_reviews"].sum() / self.listings.groupby(
+        self.neighbourhoods["number_of_reviews_per_listings"] = listings.groupby(
+            "neighbourhood_cleansed")["number_of_reviews"].sum() / listings.groupby(
             "neighbourhood_cleansed")["id"].count()
 
         # same popularity features but only for listings with reviews
-        listings_zero_revs = self.listings[self.listings["number_of_reviews"] != 0].copy()
+        listings_zero_revs = listings[listings["number_of_reviews"] != 0].copy()
         self.neighbourhoods["number_of_reviews_zero_rev"] = listings_zero_revs.groupby(
             "neighbourhood_cleansed")["number_of_reviews"].sum()
         self.neighbourhoods["number_of_listings_zero_rev"] = listings_zero_revs.groupby(

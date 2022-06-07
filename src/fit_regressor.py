@@ -1,11 +1,7 @@
 from typing import List
-
 import numpy as np
-
 from joblib import dump
-
-from sklearn.metrics import r2_score, mean_squared_error, accuracy_score
-from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
@@ -57,7 +53,7 @@ def build_linear_model(
         ("data", data_pipeline),
         ("regression", model),
     ])
-    # TODO: Use GridSearch to find best parameters for models
+    # TODO: Use GridSearchCV to find best parameters for models
     return full_pipeline
 
 
@@ -80,7 +76,7 @@ def build_randforest_model(numeric_cols: List[str], categorical_cols: List[str])
         ("regression", RandomForestRegressor()),
     ])
 
-    # TODO: Use GridSearch to find best parameters for models
+    # TODO: Use GridSearchCV to find best parameters for models
     return full_pipeline
 
 
