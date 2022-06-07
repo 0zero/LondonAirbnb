@@ -20,6 +20,13 @@ def build_linear_model(
         categorical_cols: List[str],
         model_name: str = "ols",
 ):
+    """
+
+    :param numeric_cols:
+    :param categorical_cols:
+    :param model_name:
+    :return:
+    """
     if model_name == "ols":
         model = LinearRegression()
     elif model_name == "ransac":
@@ -55,6 +62,12 @@ def build_linear_model(
 
 
 def build_randforest_model(numeric_cols: List[str], categorical_cols: List[str]):
+    """
+
+    :param numeric_cols:
+    :param categorical_cols:
+    :return:
+    """
     numerical_pipeline = Pipeline([
         ("std_scaler", StandardScaler()),
     ])
@@ -72,7 +85,13 @@ def build_randforest_model(numeric_cols: List[str], categorical_cols: List[str])
 
 
 def evaluate_model(model, x_test, y_test):
+    """
 
+    :param model:
+    :param x_test:
+    :param y_test:
+    :return:
+    """
     y_prediction = model.predict(x_test)
     return r2_score(y_test, y_prediction), np.sqrt(mean_squared_error(y_test, y_prediction))
 

@@ -1,0 +1,81 @@
+# Mesh AI take home assignment
+## Instructions
+- Choose any publically available data source you want (if it’s a personal interest of yours even better)
+- With a combination of text and visualisations derive and explain something interesting you’ve found in a manner understandable by a competent but lay audience
+- Derive and explain a business value proposition for a predictive model in this space
+- Build a V0 and evaluate the results
+- Describe how you would further iterate on this model to improve it
+- Briefly detail the implementation/productisation concerns you feel are most relevant
+
+## Requirements
+- Implemented in Python
+- Exploration piece done in Jupyter notebook
+- Implementation can take whatever form you’re most comfortable with, but you can use this as an opportunity to demonstrate some more formal software development best practices
+- The written answers can take any form you like so long as they’re accessible in an obvious and logical manner
+
+## Data
+I'll be using Airbnb listings data for London compiled in December 2021.
+- [Data](http://insideairbnb.com/get-the-data/)
+- [Data detail dictionary](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit?usp=sharing)
+- [London Airbnb visualisation](http://insideairbnb.com/london/)
+
+## Code Repository
+- My personal [Github](https://github.com/0zero/LondonAirbnb).
+
+## Data Exploration findings
+I'm looking at Airbnb listings data for London, UK and I decided to approach it from the angle of doing some preliminary investigations for a client looking to enter London's Airbnb rental space. The client is unfamiliar with London and other than finding out how much they can charge for a potential property, they'd also like to know which areas are popular with Airbnb users along with the typical price per night in these areas. 
+
+#### What is the typical price per night for Airbnb listings in London?
+
+On average, London’s three most expensive boroughs are _Westminister_ at £258 per night, the _City of London_ at £237 per night, and _Kensington and Chelsea_ at £222 per night. If you know London these findings are pretty unsurprising as these boroughs are very affluent and located right in the heart of London. However, these averages are only part of the story. London's Airbnb listing prices vary drastically in each borough and simply presenting an average doesn’t do it justice. As you can see in the ridge plot below, the spread of the prices in each London borough is pretty large, with modest listings priced from a few tens of pounds sterling per night to some luxurious listings having prices up to ~£18,000 per night!!! In such a scenario, another type of average - the median, showing the middle value - might be more suitable. This average also shows above areas as the most expensive but the price per night is around £100 cheaper compared to using the mean as the average. 
+
+
+#### What are the most popular areas in London for Airbnb users?
+
+The data we’ve got unfortunately does not provide the number of bookings each listing has had since it joined Airbnb so we’re going to use the number of reviews as a proxy for this. The assumption is that most, if not all, guests who stay at a listing will leave a review so if a listing does not have a review it has not been booked before and can be considered inactive.
+
+The map on the left shows the total number of reviews per borough. Immediately we can see that the majority of reviews, and by proxy rentals, lie within London’s central areas and the borough with the most reviews is Westminister. A lot of London’s amenities and attractions are within the central area which completely justifies why listings in these boroughs would be the most reviewed/rented in London. Interestingly, the City of London borough has very few reviews but upon closer inspection, we can see that there are only 271 active listings there which are considerably fewer than other nearby boroughs.
+
+If we look at the number of reviews per number of active listings (right figure), we see that there’s a tendency for the west and central London boroughs to be more active than those in the east. The City of London is now the most popular borough, and unexpectedly in second place is the borough of Hillingdon. Hillingdon’s popularity could be due to London’s Heathrow airport residing there and guests seeking a listing close to the airport and with good transport links into the city.
+
+Overall, visitors to London prefer to stay within the central regions so our investor might want to consider getting a property within London’s travel zones 1 or 2.
+
+## Business Value Proposition
+
+**We help holiday property investors enter new markets by letting you explore how you could make the most of your investment using our custom AI platform.**
+
+This value proposition is for holiday (short-term) property investors who are looking to invest in property in a touristic location to get an idea of what kind of return on investment they could achieve given a particular location, budget, and any property features they feel are must haves. 
+
+This could be achieved using a platform with a predictive model suite that can:
+1. Predict rental price per night for various property types and features in various touristic locations
+2. Access house purchase prices in those touristic locations
+3. Determine based on a clients budget and desired property features, if any, what kind of property and rental price would lead to the best return on investment
+
+The investors could then use the platform to explore numerous possibilities themselves in a user-friendly front-end. 
+
+## V0 Model
+I've started off using a Linear Regression and a Random Forest Regressor model from Python's Scikit Learn package.
+
+There are some details about decisions made and explorations within the `airbnb.ipynb` notebook and I've also converted some of what's in the notebook into a more productionised form.  
+
+### Model results
+
+### Model Improvements
+The models created here aren't particularly useful yet but here's a list of changes/updates that I think could lead to some improvements:
+- Implement models for each property type e.g. `entire apartment/house`, `private room`, etc. This would focus the model as you can imagine that treating a 5 bedroom house the same as a shared room is not the best approach.
+- Create a hierarchical Bayesian model with the same idea as above but instead of having X-different models, it's one that can account for all room types, or any other feature that we feel can be thought of as hierarchical. 
+- Perform a GridSearch on each possible model to obtain the "best" model parameters that we search through
+- More feature engineering. In this model it's been pretty basic so far. 
+- Perhaps use of mutual information instead of Pearson's correlation coefficient to select features that have influence on the price
+- Fit various regressor models to the data. Then perform model comparison and select the one that performs best on new/unseen data.
+- There are many different listings with the same or similar price per night so it would be wise to investigate this further and discuss with clients about being more selective with the data we use for modelling. So basically, being focused on what we want our model to be good at predicting.
+
+### Implementation / Productisation concerns
+- model drift tracking
+- new data, online learning
+- model integrity testing - ensure model still functions
+
+
+- price doesn't account for season
+- Once, prediction works reasonably well we can combine with other data sets such as house sales and create a model that can predict which areas and say house types can give a good return on investment if a client bought them and then wanted to list them on Airbnb.  
+- . After having shown this data to my client, we noted that it might be prudent to focus on smaller, less luxurious properties for any eventual modelling work.
