@@ -1,4 +1,4 @@
-# Mesh AI take home assignment
+# XXXX take home assignment
 ## Instructions
 - Choose any publically available data source you want (if it’s a personal interest of yours even better)
 - With a combination of text and visualisations derive and explain something interesting you’ve found in a manner understandable by a competent but lay audience
