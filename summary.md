@@ -47,7 +47,7 @@ On average, London’s three most expensive boroughs are _Westminister_ at £2
 The data we’ve got unfortunately does not provide the number of bookings each listing has had since it joined Airbnb so we’re going to use the number of reviews as a proxy for this. The assumption is that most, if not all, guests who stay at a listing will leave a review so if a listing does not have a review it has not been booked before and can be considered inactive.
 
 <figure>
-<img src="./plots/num_reviews.png" alt="Where are You?" style="width:60%">
+<img src="./plots/num_reviews.png" alt="Where are You?" style="width:100%">
 <figcaption align = "center"><b>Fig.3 - Left: Total number of reviews per borough. Right: Total reviews normalised by active listings. </b></figcaption>
 </figure>
 
