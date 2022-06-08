@@ -27,14 +27,15 @@ I'm looking at Airbnb listings data for London, UK and I decided to approach it 
 
 #### What is the typical price per night for Airbnb listings in London?
 
-On average, London’s three most expensive boroughs are _Westminister_ at £258 per night, the _City of London_ at £237 per night, and _Kensington and Chelsea_ at £222 per night. If you know London these findings are pretty unsurprising as these boroughs are very affluent and located right in the heart of London. 
+On average, London’s three most expensive boroughs are _Westminister_ at £258 per night, the _City of London_ at £237 per night, and _Kensington and Chelsea_ at £222 per night (Fig.1 left side). If you know London these findings are pretty unsurprising as these boroughs are very affluent and located right in the heart of London. 
+
 <figure>
-<img src="./plots/average_price.png" alt="Where are You?" style="width:60%">
+<img src="./plots/average_price.png" alt="Where are You?" style="width:100%">
 <figcaption align = "center"><b>Fig.1 - Mean (left) and median (right) listing price per London borough. </b></figcaption>
 </figure>
 
 
-<br /> However, these averages are only part of the story. London's Airbnb listing prices vary drastically in each borough and simply presenting an average doesn’t do it justice. As you can see in the ridge plot below, the spread of the prices in each London borough is pretty large, with modest listings priced from a few tens of pounds sterling per night to some luxurious listings having prices up to ~£18,000 per night!!! In such a scenario, another type of average - the median, showing the middle value - might be more suitable. This average also shows above areas as the most expensive but the price per night is around £100 cheaper compared to using the mean as the average. 
+<br /> However, these averages are only part of the story. London's Airbnb listing prices vary drastically in each borough and simply presenting an average doesn’t do it justice. As you can see in the ridge plot below (Fig.2), the spread of the prices in each London borough is pretty large, with modest listings priced from a few tens of pounds sterling per night to some luxurious listings having prices up to ~£18,000 per night!!! In such a scenario, another type of average - the median, showing the middle value - might be more suitable. This average (Fig.1 right side) also shows above areas as the most expensive but the price per night is around £100 cheaper compared to using the mean as the average. 
 
 <figure>
 <img src="./plots/price_ridge.png" alt="Where are You?" style="width:60%">
@@ -51,9 +52,9 @@ The data we’ve got unfortunately does not provide the number of bookings each 
 </figure>
 
 
-<br /> The map on the left shows the total number of reviews per borough. Immediately we can see that the majority of reviews, and by proxy rentals, lie within London’s central areas and the borough with the most reviews is Westminister. A lot of London’s amenities and attractions are within the central area which completely justifies why listings in these boroughs would be the most reviewed/rented in London. Interestingly, the City of London borough has very few reviews but upon closer inspection, we can see that there are only 271 active listings there which are considerably fewer than other nearby boroughs.
+<br /> The map on the left of Fig.3 shows the total number of reviews per borough. Immediately we can see that the majority of reviews, and by proxy rentals, lie within London’s central areas and the borough with the most reviews is Westminister. A lot of London’s amenities and attractions are within the central area which completely justifies why listings in these boroughs would be the most reviewed/rented in London. Interestingly, the City of London borough has very few reviews but upon closer inspection, we can see that there are only 271 active listings there which are considerably fewer than other nearby boroughs.
 
-If we look at the number of reviews per number of active listings (right figure), we see that there’s a tendency for the west and central London boroughs to be more active than those in the east. The City of London is now the most popular borough, and unexpectedly in second place is the borough of Hillingdon. Hillingdon’s popularity could be due to London’s Heathrow airport residing there and guests seeking a listing close to the airport and with good transport links into the city.
+If we look at the number of reviews per number of active listings (right of Fig.3), we see that there’s a tendency for the west and central London boroughs to be more active than those in the east. The City of London is now the most popular borough, and unexpectedly in second place is the borough of Hillingdon. Hillingdon’s popularity could be due to London’s Heathrow airport residing there and guests seeking a listing close to the airport and with good transport links into the city.
 
 Overall, visitors to London prefer to stay within the central regions so our investor might want to consider getting a property within London’s travel zones 1 or 2.
 
@@ -79,11 +80,11 @@ For the model runs employed I've removed all rows containing missing data in the
 
 ### Model results
 
-Overall, the two models used don't perform that well. They have an $R^2 \sim 0.45$ and an $RMSE \sim £90$. You can see from the figure that the model's predictions for prices  over $\sim £200$ are consistently undervalued compared to the real values. The linear model performs equally well on the training data as it does on the test data while the Random Forest model performs exceedingly well on the training data but almost identical to the linear model on the test data set. 
+Overall, the two models used don't perform that well. They have an $R^2 \sim 0.45$ and an $RMSE \sim £90$. You can see from Fig.4 that the model's predictions for prices over $\sim £200$ are consistently undervalued compared to the real values. The linear model performs equally well on the training data as it does on the test data while the Random Forest model performs exceedingly well on the training data but almost identical to the linear model on the test data set. 
 
 <figure>
 <img src="./plots/model_scatter.png" alt="Where are You?" style="width:60%">
-<figcaption align = "center"><b>Fig.4 - Model predictions versus test data </b></figcaption>
+<figcaption align = "center"><b>Fig.4 - Model predictions versus test data for the linear model. </b></figcaption>
 </figure>
 
 
