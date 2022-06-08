@@ -111,3 +111,4 @@ The following are a few implementation and productionisation concerns that shoul
 - Automate the deployment and testing of model
 - Automate scaling of infrastructure that model runs on
 - Monitor model infrastructure, model functionality, outputs and have alerts for when issues occur.
+- An easy to use API that can be used to allow a user or other model/application to interact with the model
