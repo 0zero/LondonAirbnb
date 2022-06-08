@@ -54,9 +54,9 @@ def main():
         )
 
         print(
-            "Loading and cleaning data...\n    Listings: {}\n    Listings Summary: {}\n    Neighbourhood: {}".format(
-                listings_path, listings_summary_path, neighbourhoods_path
-            )
+            f"Loading and cleaning data...\n    Listings: {listings_path}\n"
+            f"    Listings Summary: {listings_summary_path}\n"
+            f"Neighbourhood: {neighbourhoods_path}"
         )
         data_processor.load_and_clean_data()
 
@@ -112,17 +112,21 @@ def main():
         )
 
         print(
-            f"The r-squared and rmse scores for your Linear model was {linear_r2}, {linear_rmse} on {len(y_test)} values."
+            "The r-squared and rmse scores for your Linear model was "
+            f"{linear_r2}, {linear_rmse} on {len(y_test)} values."
         )
         print(
-            f"The r-squared and rmse scores on the training data for your Linear model was {linear_train_r2}, {linear_train_rmse}."
+            "The r-squared and rmse scores on the training data for your Linear model "
+            f"was {linear_train_r2}, {linear_train_rmse}."
         )
 
         print(
-            f"The r-squared and rmse scores for your RandomForest model was {randfo_r2}, {randfo_rmse} on {len(y_test)} values."
+            "The r-squared and rmse scores for your RandomForest model "
+            f"was {randfo_r2}, {randfo_rmse} on {len(y_test)} values."
         )
         print(
-            f"The r-squared and rmse scores on the training data for your RandomForest model was {randfo_train_r2}, {randfo_train_rmse}."
+            "The r-squared and rmse scores on the training data for your RandomForest "
+            f"model was {randfo_train_r2}, {randfo_train_rmse}."
         )
 
         print("Creating figures...")

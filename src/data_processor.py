@@ -28,8 +28,8 @@ class DataProcessor:
 
     def load_and_clean_data(self) -> None:
         """
-        Load in data from file paths, remove duplicates and some NaNs (if all rows in column are NaN
-        or target variable row is NaN)
+        Load in data from file paths, remove duplicates and some NaNs (if all
+        rows in column are NaN or target variable row is NaN)
         :return: None but assigns cleaned DataFrame and GeoDataFrame to class attributes
         """
         if self.use_clean_data:
@@ -72,7 +72,12 @@ class DataProcessor:
 
         # TODO: Add GeoDataFrame to sqlite DB like
         #  https://www.giacomodebidda.com/posts/export-a-geodataframe-to-spatialite/
-        # self.neighbourhoods.to_postgis('Neighbourhoods', engine, index=False, if_exists="replace")
+        # self.neighbourhoods.to_postgis(
+        #     "Neighbourhoods",
+        #     engine,
+        #     index=False,
+        #     if_exists="replace",
+        # )
         # For now, just export cleaned GeoDataFrame as a new geojson file
         geojson_path = (
             self.neighbourhoods_path.parent / "neighbourhoods_cleaned.geojson"
@@ -128,10 +133,10 @@ class DataProcessor:
         )
 
         # Features for Popularity across London Boroughs. We're using the number_of_reviews as a
-        # proxy for popularity here. We're assuming that, for the most part, if someone rents a listing,
-        # they'll leave a review and therefore listings without reviews have never been rented.
-        # This assumption is fairly strong but in the absence of data related to how many times
-        # each listing has been rented this is a good substitute.
+        # proxy for popularity here. We're assuming that, for the most part, if someone rents a
+        # listing, they'll leave a review and therefore listings without reviews have never been
+        # rented. This assumption is fairly strong but in the absence of data related to how
+        # many times each listing has been rented this is a good substitute.
 
         self.neighbourhoods["number_of_reviews"] = listings.groupby(
             "neighbourhood_cleansed"
@@ -164,11 +169,13 @@ class DataProcessor:
 
     def create_listing_features(self, remove_all_nans: bool = False) -> pd.DataFrame:
         """
-        Create reduced listings dataframe which will be used as basis of modelling operations.
-        Option to either remove all NaN data or fill in the NaN values with the mode of the feature.
+        Create reduced listings dataframe which will be used as basis of modelling
+        operations. Option to either remove all NaN data or fill in the NaN values
+        with the mode of the feature.
         :param remove_all_nans: Whether to remove all rows with any NaNs
         :return: A tuple with:
-            i) a reduced DF containing all data ready for to go into our training pipeline
+            i) a reduced DF containing all data ready for to go into our training
+                pipeline
             ii) a list of categorical data columns
         """
         raw_features_cols = [
@@ -185,19 +192,20 @@ class DataProcessor:
 
         listings_modelling = self.listings[raw_features_cols].copy()
         # Create bathrooms features
-        # bathrooms_text I think we can convert these to a numerical value along with whether the
-        # bathroom is private or not. I'm going to assume that if the room_type is the Entire home/apt then the
-        # bathroom is also private.
+        # bathrooms_text I think we can convert these to a numerical value along with
+        # whether the bathroom is private or not. I'm going to assume that if the room_type
+        # is the Entire home/apt then the bathroom is also private.
         bath_num, bath_private = get_bathroom_number(
             self.listings[raw_features_cols], "bathrooms_text", use_bool=True
         )
         listings_modelling["bathrooms_number"] = bath_num
         listings_modelling["bathrooms_private"] = bath_private
 
-        # There are a few categorical features that have some missing data. In the notebook, I fill the
-        # values with the mode (which has the same value as the median in our cases). But I also want to
-        # have the option of removing all the rows with missing data, it's only about 6% of rows have
-        # missing data and while not ideal, this is still very much a work in progress.
+        # There are a few categorical features that have some missing data. In the notebook,
+        # I fill the values with the mode (which has the same value as the median in our cases).
+        # But I also want to have the option of removing all the rows with missing data,
+        # it's only about 6% of rows have missing data and while not ideal, this is still very
+        # much a work in progress.
         if remove_all_nans:
             listings_modelling.dropna(axis=0, how="any", inplace=True)
         else:
@@ -383,7 +391,7 @@ def create_dummy_df(
                 axis=1,
             )
         # TODO: fix this and deal with exceptions properly
-        except:
+        except Exception:
             continue
     return df
 
