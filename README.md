@@ -55,6 +55,14 @@ conda activate airbnb_london
 ```
 This will install `numpy`, `pandas`, `geopandas`, `matplotlib`, `sklearn`, `seaborn`, `plotly` and their dependencies. 
 
+## Run instructions
+To run the python implementation in `src` please enter the following commands in your terminal:
+```
+python src/process_data.py data/listings.csv data/listings_summary.csv data/neighbourhoods.geojson data/LondonAirbnbDatabase.db
+```
+It will take about 3 minutes to run from end-to-end and will display some key findings around price and model output 
+metrics. 
+
 ## Other files description
 * `airbnb.ipynb` : Jupyter notebook containing all the analysis within this project.
 * `.gitattributes` : containing details of which file types are tracked by `git lfs`.
