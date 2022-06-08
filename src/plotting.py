@@ -16,12 +16,12 @@ PLOT_PATH = Path(__file__).parent.parent / "plots"
 
 
 def plot_single_column_maps(
-        df: gpd.GeoDataFrame,
-        column_name: str,
-        cmap_label: str,
-        roundoff: int = -1,
-        annotate: bool = True,
-        savefig: bool = False,
+    df: gpd.GeoDataFrame,
+    column_name: str,
+    cmap_label: str,
+    roundoff: int = -1,
+    annotate: bool = True,
+    savefig: bool = False,
 ):
     """
      Plot single column from a geoPandas DataFrame
@@ -42,21 +42,21 @@ def plot_single_column_maps(
         column=column_name,
         figsize=(15, 12),
         alpha=0.9,
-        edgecolor='grey',
+        edgecolor="grey",
         legend=True,
         cmap="Oranges",
         vmin=np.round(df[column_name].min(), roundoff),
         vmax=np.round(df[column_name].max(), roundoff),
-        legend_kwds={'label': cmap_label, 'orientation': "horizontal"},
-    );
-    axes.set_axis_off();
+        legend_kwds={"label": cmap_label, "orientation": "horizontal"},
+    )
+    axes.set_axis_off()
     plt.margins(y=0)
     if annotate:
         for _, row in df.iterrows():
             axes.annotate(
                 text=np.round(row[column_name], roundoff),
                 xy=(row["centre"].x, row["centre"].y),
-                horizontalalignment='center',
+                horizontalalignment="center",
                 fontsize=10,
                 weight="bold",
             )
@@ -66,13 +66,13 @@ def plot_single_column_maps(
 
 
 def plot_multiple_column_maps(
-        df: gpd.GeoDataFrame,
-        column_list: List[str],
-        cmap_label_list: List[str],
-        cmap_roundoff: int = -1,
-        figname: str = "average_price",
-        annotate: bool = True,
-        savefig: bool = False,
+    df: gpd.GeoDataFrame,
+    column_list: List[str],
+    cmap_label_list: List[str],
+    cmap_roundoff: int = -1,
+    figname: str = "average_price",
+    annotate: bool = True,
+    savefig: bool = False,
 ):
     """
     Plot multiple columns from a geoPandas DataFrame
@@ -96,21 +96,21 @@ def plot_multiple_column_maps(
             column=col,
             figsize=(15, 12),
             alpha=0.9,
-            edgecolor='grey',
+            edgecolor="grey",
             legend=True,
             cmap="Oranges",
             vmin=np.round(df[col].min(), cmap_roundoff),
             vmax=np.round(df[col].max(), cmap_roundoff),
-            legend_kwds={'label': cmap_label_list[i], 'orientation': "horizontal"},
-        );
-        axes[i].set_axis_off();
+            legend_kwds={"label": cmap_label_list[i], "orientation": "horizontal"},
+        )
+        axes[i].set_axis_off()
         plt.margins(y=0)
         if annotate:
             for _, row in df.iterrows():
                 axes[i].annotate(
                     text=int(row[col]),
                     xy=(row["centre"].x, row["centre"].y),
-                    horizontalalignment='center',
+                    horizontalalignment="center",
                     fontsize=10,
                     weight="bold",
                 )
@@ -121,11 +121,11 @@ def plot_multiple_column_maps(
 
 
 def plot_ridge_plot(
-        df: pd.DataFrame,
-        column_name: str,
-        xlabel: str,
-        log_xvalue: bool = False,
-        savefig: bool = False,
+    df: pd.DataFrame,
+    column_name: str,
+    xlabel: str,
+    log_xvalue: bool = False,
+    savefig: bool = False,
 ):
     """
     Plot a Plotly ridge plot of a column from a dataframe.
@@ -139,7 +139,9 @@ def plot_ridge_plot(
     """
 
     n_boroughs = len(df["neighbourhood_cleansed"].unique())
-    colors = n_colors('rgb(5, 200, 200)', 'rgb(200, 10, 10)', n_boroughs, colortype='rgb')
+    colors = n_colors(
+        "rgb(5, 200, 200)", "rgb(200, 10, 10)", n_boroughs, colortype="rgb"
+    )
 
     fig = go.Figure()
 
@@ -158,9 +160,15 @@ def plot_ridge_plot(
             )
         )
 
-    fig.update_traces(orientation='h', side='positive', width=3, points=False)
-    fig.update_layout(xaxis_showgrid=False, xaxis_zeroline=False, width=1500, height=1200, xaxis_title=xlabel,
-                      font=dict(size=20))
+    fig.update_traces(orientation="h", side="positive", width=3, points=False)
+    fig.update_layout(
+        xaxis_showgrid=False,
+        xaxis_zeroline=False,
+        width=1500,
+        height=1200,
+        xaxis_title=xlabel,
+        font=dict(size=20),
+    )
     if savefig:
         figure_name = PLOT_PATH / "price_ridge.png"
         fig.write_image(figure_name)
@@ -169,13 +177,13 @@ def plot_ridge_plot(
 
 
 def plot_pred_vs_test(
-        y_test1,
-        y_pred1,
-        labels_list: List[str],
-        target_limit=1000,
-        y_test2=None,
-        y_pred2=None,
-        savefig: bool = False,
+    y_test1,
+    y_pred1,
+    labels_list: List[str],
+    target_limit=1000,
+    y_test2=None,
+    y_pred2=None,
+    savefig: bool = False,
 ):
     """
     Plot test data versus predictions for two models
@@ -188,15 +196,15 @@ def plot_pred_vs_test(
     :param savefig: flag to export figure or not
     :return:
     """
-    _, ax = plt.subplots(figsize=(12, 10));
+    _, ax = plt.subplots(figsize=(12, 10))
 
-    ax.scatter(y_test1, y_pred1, alpha=0.5, label=labels_list[0]);
+    ax.scatter(y_test1, y_pred1, alpha=0.5, label=labels_list[0])
     if y_test2 and y_pred2:
-        ax.scatter(y_test2, y_pred2, alpha=0.5, label=labels_list[1]);
-    ax.plot(np.arange(target_limit), np.arange(target_limit), '-k', linewidth=2);
-    plt.xlabel("Actual / £");
-    plt.ylabel("Predicted / £");
-    plt.legend();
+        ax.scatter(y_test2, y_pred2, alpha=0.5, label=labels_list[1])
+    ax.plot(np.arange(target_limit), np.arange(target_limit), "-k", linewidth=2)
+    plt.xlabel("Actual / £")
+    plt.ylabel("Predicted / £")
+    plt.legend()
 
     if savefig:
         figure_name = PLOT_PATH / "model_scatter.png"
