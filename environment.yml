@@ -9,6 +9,7 @@ dependencies:
   - alsa-lib=1.2.3=h516909a_0
   - altair=4.2.0=pyhd8ed1ab_1
   - anyio=3.5.0=py39h06a4308_0
+  - appdirs=1.4.4=pyhd3eb1b0_0
   - argon2-cffi=21.3.0=pyhd3eb1b0_0
   - argon2-cffi-bindings=21.2.0=py39h7f8727e_0
   - asttokens=2.0.5=pyhd3eb1b0_0
@@ -16,6 +17,7 @@ dependencies:
   - babel=2.9.1=pyhd3eb1b0_0
   - backcall=0.2.0=pyhd3eb1b0_0
   - beautifulsoup4=4.10.0=pyh06a4308_0
+  - black=22.3.0=pyhd8ed1ab_0
   - blas=1.0=mkl
   - bleach=4.1.0=pyhd3eb1b0_0
   - blosc=1.21.0=h9c3ff4c_0
@@ -39,6 +41,7 @@ dependencies:
   - cryptography=36.0.0=py39h9ce1e76_0
   - curl=7.82.0=h2283fc2_0
   - cycler=0.11.0=pyhd3eb1b0_0
+  - dataclasses=0.8=pyhc8e2a94_3
   - dbus=1.13.18=hb2f20db_0
   - debugpy=1.5.1=py39h295c915_0
   - decorator=5.1.1=pyhd3eb1b0_0
@@ -47,6 +50,7 @@ dependencies:
   - executing=0.8.3=pyhd3eb1b0_0
   - expat=2.4.4=h295c915_0
   - fiona=1.8.21=py39hc5a795b_0
+  - flake8=4.0.1=pyhd3eb1b0_1
   - folium=0.12.1.post1=pyhd8ed1ab_1
   - font-ttf-dejavu-sans-mono=2.37=hab24e00_0
   - font-ttf-inconsolata=3.000=h77eed37_0
@@ -155,6 +159,7 @@ dependencies:
   - matplotlib=3.5.1=py39h06a4308_1
   - matplotlib-base=3.5.1=py39ha18d171_1
   - matplotlib-inline=0.1.2=pyhd3eb1b0_2
+  - mccabe=0.7.0=pyhd3eb1b0_0
   - mercantile=1.2.1=pyhd8ed1ab_0
   - mistune=0.8.4=py39h27cfd23_1000
   - mkl=2021.4.0=h06a4308_640
@@ -163,6 +168,7 @@ dependencies:
   - mkl_random=1.2.2=py39h51133e4_0
   - munch=2.5.0=py_0
   - munkres=1.1.4=py_0
+  - mypy_extensions=0.4.3=py39h06a4308_1
   - mysql-common=8.0.28=h26416b9_4
   - mysql-libs=8.0.28=hbc51c84_4
   - nbclassic=0.3.5=pyhd3eb1b0_0
@@ -184,12 +190,14 @@ dependencies:
   - pandas=1.4.1=py39h295c915_1
   - pandocfilters=1.5.0=pyhd3eb1b0_0
   - parso=0.8.3=pyhd3eb1b0_0
+  - pathspec=0.9.0=pyhd8ed1ab_0
   - pcre=8.45=h295c915_0
   - pexpect=4.8.0=pyhd3eb1b0_3
   - pickleshare=0.7.5=pyhd3eb1b0_1003
   - pillow=9.0.1=py39h22f2fdc_0
   - pip=21.2.4=py39h06a4308_0
   - pixman=0.40.0=h36c2ea0_0
+  - platformdirs=2.5.1=pyhd8ed1ab_0
   - plotly=5.6.0=pyhd3eb1b0_0
   - poppler=21.11.0=ha39eefc_0
   - poppler-data=0.4.11=hd8ed1ab_0
@@ -200,7 +208,9 @@ dependencies:
   - pthread-stubs=0.4=h36c2ea0_1001
   - ptyprocess=0.7.0=pyhd3eb1b0_2
   - pure_eval=0.2.2=pyhd3eb1b0_0
+  - pycodestyle=2.8.0=pyhd3eb1b0_0
   - pycparser=2.21=pyhd3eb1b0_0
+  - pyflakes=2.4.0=pyhd3eb1b0_0
   - pygments=2.11.2=pyhd3eb1b0_0
   - pyopenssl=22.0.0=pyhd3eb1b0_0
   - pyparsing=3.0.4=pyhd3eb1b0_0
@@ -222,6 +232,7 @@ dependencies:
   - qt=5.12.9=ha98a1a1_5
   - rasterio=1.2.10=py39h0401cea_4
   - readline=8.1.2=h7f8727e_1
+  - regex=2022.3.15=py39h7f8727e_0
   - requests=2.27.1=pyhd3eb1b0_0
   - rtree=1.0.0=py39hb102c33_1
   - scikit-learn=1.0.2=py39h4dfa638_0
@@ -244,9 +255,12 @@ dependencies:
   - threadpoolctl=3.1.0=pyh8a188c0_0
   - tiledb=2.6.4=h3f4058f_0
   - tk=8.6.12=h27826a3_0
+  - toml=0.10.2=pyhd3eb1b0_0
+  - tomli=2.0.1=pyhd8ed1ab_0
   - toolz=0.11.2=pyhd8ed1ab_0
   - tornado=6.1=py39h27cfd23_0
   - traitlets=5.1.1=pyhd3eb1b0_0
+  - typed-ast=1.4.3=py39h7f8727e_1
   - typing-extensions=4.1.1=hd3eb1b0_0
   - typing_extensions=4.1.1=pyh06a4308_0
   - tzcode=2022a=h166bdaf_0
